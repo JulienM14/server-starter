@@ -1,13 +1,15 @@
 import java.io.*;
 import java.net.*;
-
-
+import java.util.*;
 class Client {
+    public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 7777);
+            Socket socket = new Socket("192.168.1.77", 7777);
             DataOutputStream dout = new DataOutputStream(socket.getOutputStream());
-            dout.writeUTF("hello!");
+            System.out.print("Type a message > ");
+            String userInput = input.nextLine();
+            dout.writeUTF(userInput);
             dout.flush();
             dout.close();
             socket.close();
