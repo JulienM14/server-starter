@@ -5,13 +5,12 @@ class Client {
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("192.168.1.77", 7777);
+            Socket socket = new Socket("192.168.1.217", 7777);
             DataOutputStream dout = new DataOutputStream(socket.getOutputStream());
             System.out.print("Type a message > ");
             String userInput = input.nextLine();
             dout.writeUTF(userInput);
             dout.flush();
-            dout.close();
             socket.close();
         }
         catch (Exception e) {
